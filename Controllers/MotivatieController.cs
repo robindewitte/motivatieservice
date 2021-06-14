@@ -29,7 +29,6 @@ namespace motivatieservice.Controllers
         [Route("motivatie")]
         public ActionResult<string> Motivatie(MotivatieDTO motievatieDTO)
         {
-            System.Diagnostics.Process.Start("https://motivatiebutton20210611153721.azurewebsites.net/api/Motivatie?");
             string username = motievatieDTO.Username;
             string answer = _counterService.CountUp(username);
             return answer;
