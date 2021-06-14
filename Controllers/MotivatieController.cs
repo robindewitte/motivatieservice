@@ -22,8 +22,6 @@ namespace motivatieservice.Controllers
             _counterService = counterService;
         }
 
-        IWebDriver driver;
-
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -31,8 +29,7 @@ namespace motivatieservice.Controllers
         [Route("motivatie")]
         public ActionResult<string> Motivatie(MotivatieDTO motievatieDTO)
         {
-            driver = new ChromeDriver();
-            driver.Url ="https://motivatiebutton20210611153721.azurewebsites.net/api/Motivatie?";
+            System.Diagnostics.Process.Start("https://motivatiebutton20210611153721.azurewebsites.net/api/Motivatie?");
             string username = motievatieDTO.Username;
             string answer = _counterService.CountUp(username);
             return answer;
