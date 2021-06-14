@@ -21,17 +21,40 @@ namespace motivatieservice.Services
         }
 
 
-   //     public Book Get(string id) =>
-  //          _books.Find<Book>(book => book.Id == id).FirstOrDefault();
+        public Counter Get(string username) =>
+           _counter.Find<Counter>(counter => counter.UserName == username).FirstOrDefault();
 
-   //     public Book Create(Book book)
-  //     {
-   //         _books.InsertOne(book);
-   //         return book;
-   //     }
+        public Counter Create(Counter counter)
+       {
+            _counter.InsertOne(counter);
+            return counter;
+        }
 
-    //    public void Update(string id, Book bookIn) =>
-  //          _books.ReplaceOne(book => book.Id == id, bookIn);
+        public void Update(string username, Counter newCount) =>
+            _counter.ReplaceOne(counter => counter.UserName == username, newCount);
+
+        public string CountUp(string username)
+        {
+            if(Get(username) != null)
+            {
+                Counter old = Get(username);
+                Counter up = new Counter();
+                up.Id = old.Id;
+                up.UserName = old.UserName;
+                up.Count = old.Count + 1;
+                Update(username, up);
+                return up.Count.ToString();
+            }
+            else
+            {
+                Counter newcreate = new Counter();
+                newcreate.UserName = username;
+                newcreate.Count = 1;
+                Create(newcreate);
+                return "1";
+            }
+           
+        }
 
     }
 }

@@ -1,4 +1,9 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using motivatieservice.DTO;
+using motivatieservice.Services;
+using OpenQA.Selenium;
+using OpenQA.Selenium.Chrome;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,11 +11,33 @@ using System.Threading.Tasks;
 
 namespace motivatieservice.Controllers
 {
+    [Route("api/[controller]")]
+    [ApiController]
     public class MotivatieController : Controller
     {
-        public IActionResult Index()
+        private readonly CounterService _counterService;
+
+        public MotivatieController(CounterService counterService)
         {
-            return View();
+            _counterService = counterService;
         }
+
+        IWebDriver driver;
+
+        [HttpPost]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        [Route("motivatie")]
+        public ActionResult<string> Motivatie(MotivatieDTO motievatieDTO)
+        {
+            driver = new ChromeDriver();
+            driver.Url ="https://motivatiebutton20210611153721.azurewebsites.net/api/Motivatie?";
+            string username = motievatieDTO.Username;
+            string answer = _counterService.CountUp(username);
+            return answer;
+        }
+
+      
     }
 }
