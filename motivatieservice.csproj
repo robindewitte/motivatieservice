@@ -33,4 +33,16 @@
     <Content Remove="C:\Users\Robin de Witte\.nuget\packages\mongodb.driver.core\2.12.4\build\../runtimes/win/native/libzstd.dll" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Content Remove="C:\Users\Robin de Witte\.nuget\packages\mongodb.driver.core\2.12.4\build\../runtimes/win/native/libzstd.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="C:\Users\Robin de Witte\.nuget\packages\mongodb.driver.core\2.12.4\build\../runtimes/win/native/libzstd.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="C:\Users\Robin de Witte\.nuget\packages\mongodb.driver.core\2.12.4\build\../runtimes/win/native/libzstd.dll" />
+  </ItemGroup>
+
 </Project>
