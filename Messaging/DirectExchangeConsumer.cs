@@ -1,5 +1,6 @@
 ﻿using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
+using RabbitMQ;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,7 +13,7 @@ namespace motivatieservice.Messaging
     {
         public static void Consume(IModel channel)
         {
-            channel.ExchangeDeclare("mock-direct-exchange", exchangetype.direct);
+            channel.ExchangeDeclare("mock-direct-exchange", ExchangeType.Direct);
             channel.QueueDeclare("demo-direct-queue",
                 durable: true,
                 exclusive: false,
