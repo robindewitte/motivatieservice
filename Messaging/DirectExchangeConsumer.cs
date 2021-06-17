@@ -12,7 +12,7 @@ namespace motivatieservice.Messaging
     {
         public static void Consume(IModel channel)
         {
-            channel.ExchangeDeclare("mock-direct-exchange", ExchangeType.Direct);
+            channel.ExchangeDeclare("mock-direct-exchange", exchangetype.direct);
             channel.QueueDeclare("demo-direct-queue",
                 durable: true,
                 exclusive: false,
